@@ -13,7 +13,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   Link,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -24,6 +23,7 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons'
 import { Logo } from '../Footer/Footer'
+import colors from '../../utils/Colors'
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -74,10 +74,10 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
+            bg={colors.primary}
             href={'/register'}
             _hover={{
-              bg: 'pink.300',
+              bg: colors.darkerPrimary,
             }}>
             Sign Up
           </Button>
