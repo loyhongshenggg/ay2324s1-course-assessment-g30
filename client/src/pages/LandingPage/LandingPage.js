@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Container,
   Stack,
@@ -11,13 +9,17 @@ import {
   Image,
   Icon,
   useColorModeValue,
+  Spacer,
+  VStack
 } from '@chakra-ui/react'
 import colors from '../../utils/Colors'
-import Table from './Table/Table'
+import Table from '../../components/Table/Table'
+import { Formik } from 'formik'
 
 export default function LandingPage() {
   return (
     <>
+    <VStack spacing={'50px'}>
     <Container maxW={'7xl'}>
       <Stack
         align={'center'}
@@ -99,9 +101,11 @@ export default function LandingPage() {
         </Flex>
       </Stack>
     </Container>
+    <Spacer />
     <Container maxW={'6xl'}>
       <Table />
     </Container>
+    </VStack>
     </>
   )
 }

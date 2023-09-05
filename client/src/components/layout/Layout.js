@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const location = useLocation();
   
   const isLogin = () => {
-    if (location.pathname == '/' || location.pathname == '/login' || location.pathname == '/register' || location.pathname == '/forgot_password') {
+    // if (location.pathname == '/' || location.pathname == '/login' || location.pathname == '/register' || location.pathname == '/forgot_password') {
       return (
         <>
         <NavigationBar /> 
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         </Container>
         </>
       );
-    } 
+    // } 
     // else {
     //   return (
     //     <>
