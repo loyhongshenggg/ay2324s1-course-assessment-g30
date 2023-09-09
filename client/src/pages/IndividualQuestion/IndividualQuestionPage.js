@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getQuestionById, deleteTableEntry, getQuestionInfoById } from '../../utils/localStorage/localStorage';
-import { Button, Heading, Tabs, TabList, TabPanels, TabPanel, Tab, Container, HStack, Box, Text } from '@chakra-ui/react';
+import { Button, Heading, Tabs, TabList, TabPanels, TabPanel, Tab, Container, HStack, Box, Text, Textarea, Spacer, Card, CardBody, CardHeader } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 function IndividualQuestionPage() {
@@ -26,7 +26,6 @@ function IndividualQuestionPage() {
 
     const parser = new DOMParser();
     
-    const [html, setHTML] = useState([]);
     function formatQuestionInfo() {
       const html = parser.parseFromString(info.question_description, 'text/html'); 
       const formattedHtml = html.documentElement.innerHTML;
@@ -39,7 +38,7 @@ function IndividualQuestionPage() {
     <>
     <HStack maxW={'100%'}>
      
-      <Box w={'55vw'} h={'100vh'}>
+      <Box padding={'10px'} borderRight={'1px'} borderColor={'#D3D3D3'} w={'55vw'} h={'100vh'}>
       
       <Tabs>
       <TabList>
@@ -65,14 +64,22 @@ function IndividualQuestionPage() {
      
       
       </Box>
-      <Box display={'flex'} flexDir={'column'} alignSelf={'flex-start'}>
+      <Box padding={'10px'} pl={'10'} display={'flex'} flexDir={'column'} alignSelf={'flex-start'}>
+        <HStack display={'flex'} alignItems={'flex-start'} spacing={'20'}>
         <Heading mb={10}>Question</Heading>
-        <Text fontSize={'lg'}>{question.question_title} id: {question.question_id}</Text>
-        <p></p>
-        <p>{question.question_categories}</p>
-        <p>{question?.question_description}</p>
-        <p>{question?.question_complexity}</p>
         <Button maxWidth={'90%'} onClick={() => {deleteTableEntry(question.question_id); navigator('/')}}>Delete Question</Button>
+        </HStack>
+        <Card mb={10}>
+          <CardBody>
+            <Heading fontSize={'lg'}>{question.question_id}. {question.question_title}</Heading>
+            <Text>{question.question_categories}</Text>
+            <Text>{question?.question_description}</Text>
+            <Text>{question?.question_complexity}</Text>
+          </CardBody>
+        </Card>
+        
+        
+        <Textarea minH={'500px'}placeholder='Enter Code Here' resize={'vertical'}/>
       </Box>
       
     </HStack>
